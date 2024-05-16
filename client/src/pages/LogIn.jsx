@@ -6,17 +6,15 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 
 const defaultTheme = createTheme();
 
 export default function LogIn() {
-  const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -33,8 +31,9 @@ export default function LogIn() {
         userData
       );
       const { token, expiryTime } = response.data;
-      logIn(token, expiryTime);
-      // localStorage.setItem("token", token);
+      
+      localStorage.setItem("token", token);
+      localStorage.setItem("expiryTime", expiryTime);
 
       navigate("/watchlist");
     } catch (error) {
@@ -54,7 +53,7 @@ export default function LogIn() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}><LockOutlinedIcon /></Avatar>
           <Typography component="h1" variant="h5">
             Log in
           </Typography>

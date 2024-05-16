@@ -8,22 +8,17 @@ import {
 import SignUp from "./pages/SignUp";
 import LogIn from "./pages/LogIn";
 import WatchlistPage from "./pages/WatchlistPage";
-import { AuthProvider } from "./context/AuthContext";
-import ProtectedRoute from "./components/common/ProtectedRoute";
 
 function App() {
   return (
-    <AuthProvider>
       <Router>
         <Routes>
           <Route exact path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/register" element={<SignUp />} />
-          {/* <Route path="/watchlist" element={<WatchlistPage />} /> */}
-          <Route path="/watchlist" element={<ProtectedRoute><WatchlistPage /></ProtectedRoute>} />
+          <Route path="/watchlist" element={<WatchlistPage />} />
         </Routes>
       </Router>
-    </AuthProvider>
   );
 }
 

@@ -7,6 +7,12 @@
     /* background-color: #FAFAFA; */
 }
 
+.myWatchlist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .wGroup {
     display: flex;
     justify-content: center;

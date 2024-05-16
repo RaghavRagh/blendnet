@@ -11,16 +11,23 @@ const AuthProvider = ({ children }) => {
     const storedExpiryTime = localStorage.getItem('expiryTime');
 
     if (storedToken && storedExpiryTime) {
-      const expiryTime = parseInt(storedExpiryTime, 10);
-      if (new Date().getTime() < expiryTime) {
-        console.log("new Date() ",new Date().getTime());
-        console.log(expiryTime);
-        setToken(storedToken);
+      // const expiryTime = parseInt(storedExpiryTime, 10);
+      const currentTime = Date.now() /1000;
+      if (parseInt(storedExpiryTime) > currentTime) {
         setIsAuthenticated(true);
+        setToken(storedToken);
       } else {
+        // Token expired
         localStorage.removeItem('token');
         localStorage.removeItem('expiryTime');
       }
+      // if (new Date().getTime() < expiryTime) {
+      //   setToken(storedToken);
+      //   setIsAuthenticated(true);
+      // } else {
+      //   localStorage.removeItem('token');
+      //   localStorage.removeItem('expiryTime');
+      // }
     }
   }, []);
 

@@ -6,6 +6,7 @@ import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
@@ -14,22 +15,24 @@ import { useNavigate } from "react-router-dom";
 const defaultTheme = createTheme();
 
 export default function SignUp() {
-
   const navigate = useNavigate();
-  
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const userData = {
-      username: formData.get('username'),
-      email: formData.get('email'),
-      password: formData.get('password')
-    }
+      username: formData.get("username"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
 
     try {
-      const response = await axios.post('http://localhost:3000/auth/register', userData);
+      const response = await axios.post(
+        "http://localhost:3000/auth/register",
+        userData
+      );
       console.log(response.data);
-      navigate('/');
+      navigate("/");
     } catch (error) {
       console.error(error.response.data);
     }
@@ -47,7 +50,9 @@ export default function SignUp() {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
@@ -125,7 +130,7 @@ export default function SignUp() {
             </Button>
             <Grid container justifyContent="center">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="http://localhost:5173/login" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>

@@ -1,0 +1,25 @@
+.watchlistContainer {
+    height: 100vh;
+    max-width: 1280px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #FAFAFA; */
+}
+
+.wGroup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.watchlistCard:hover{
+    box-shadow: 10px 10px 5px rgb(199, 206, 208);
+}
+
+.cardTopic {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

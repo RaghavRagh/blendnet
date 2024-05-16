@@ -1,6 +1,6 @@
 # blendnet_Assignment
 
-API Endpoints
+# API Endpoints
 Authentication
 POST /auth/register: Register a new user.
 
